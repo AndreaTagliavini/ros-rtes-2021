@@ -9,7 +9,12 @@ add_compile_options(-std=c++11)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  #cv_bridge
+  #image_transport
 )
+
+#find_package(OpenCV REQUIRED)
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -115,6 +120,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  #${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -132,6 +138,8 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(${PROJECT_NAME}_node src/hello_world_node.cpp)
 add_executable(my_pub_node src/my_pub_node.cpp)
+add_executable(my_sub_node src/my_sub_node.cpp)
+#add_executable(my_bag_node src/my_bag_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -151,6 +159,14 @@ target_link_libraries(${PROJECT_NAME}_node
 target_link_libraries(my_pub_node
   ${catkin_LIBRARIES}
 )
+
+target_link_libraries(my_sub_node
+  ${catkin_LIBRARIES}
+)
+
+#target_link_libraries(my_bag_node
+#  ${catkin_LIBRARIES}
+#)
 
 #############
 ## Install ##
