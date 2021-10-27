@@ -166,6 +166,7 @@ target_link_libraries(my_sub_node
 
 #target_link_libraries(my_bag_node
 #  ${catkin_LIBRARIES}
+#  ${OpenCV_LIBRARIES}
 #)
 
 #############
